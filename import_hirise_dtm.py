@@ -352,7 +352,7 @@ def PVLload(path):
     return LabelParser.load(path)
 
 
-#------- terrain.py
+#------- mesh/terrain.py
 
 
 class BTerrain:
@@ -504,7 +504,7 @@ class BTerrain:
         # areas with no data)
         vertices = vertices[~np.isnan(vertices).any(axis=1)]
 
-        
+
         # Calculate the faces of the mesh
         triangulation = Triangulate(dtm.data)
         faces = triangulation.face_list()
@@ -522,7 +522,7 @@ class BTerrain:
         # Create a new UV layer
         mesh.uv_layers.new(name="HiRISE Generated UV Map")
 
-        # We'll use a bmesh to populate the UV map with values        
+        # We'll use a bmesh to populate the UV map with values
         bm = bmesh.new()
         bm.from_mesh(mesh)
         bm.faces.ensure_lookup_table()
@@ -584,7 +584,7 @@ class BTerrain:
         }
 
 
-#------- dtm.py
+#------- mesh/dtm.py
 
 
 class DTM:
@@ -806,7 +806,7 @@ class DTM:
         return (num_rows, num_cols)
 
 
-#-------
+#------- mesh/triangulate.py
 
 
 class Triangulate:
@@ -1148,7 +1148,7 @@ class LabelParser:
             raise ValueError
 
 
-#-------
+#------- __init.py__
 
 
 def menu_import(self, context):
@@ -1178,3 +1178,4 @@ def unregister():
 
 if __name__ == '__main__':
     register()
+
