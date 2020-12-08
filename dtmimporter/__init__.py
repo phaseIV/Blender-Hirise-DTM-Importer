@@ -19,19 +19,14 @@
 
 """A HiRISE DTM Importer for Blender"""
 
-import bpy
-
-from .ui import importer
-from .ui import terrainpanel
-
 bl_info = {
     "name": "HiRISE DTM Importer",
     "author": "Nicholas Wolf (nicwolf@pirl.lpl.arizona.edu) / phaseIV",
-    "version": (0, 2, 0),
+    "version": (0, 2, 3),
     "blender": (2, 80, 0),
     "license": "GPL",
     "location": "File > Import > HiRISE DTM (.img)",
-    "description": "Import a HiRISE DTM as a mesh.",
+    "description": "Import a HiRISE DTM as a mesh",
     "warning": "May consume a lot of memory",
     "category": "Import-Export",
     "wiki_url": "",  # TBD
@@ -40,9 +35,14 @@ bl_info = {
 }
 
 if "bpy" in locals():
-    import imp
-    imp.reload(importer)
-    imp.reload(terrainpanel)
+    import importlib
+    importlib.reload(importer)
+    importlib.reload(terrainpanel)
+else:
+    from .ui import importer
+    from .ui import terrainpanel
+
+import bpy
 
 
 def menu_import(self, context):
