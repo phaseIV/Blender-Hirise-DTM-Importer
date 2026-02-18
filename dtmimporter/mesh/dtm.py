@@ -66,11 +66,11 @@ class DTM:
     #     HRS  : High Representation Saturation
     #     HIS  : High Insturment Saturation
     SPECIAL_VALUES = {
-        "NULL": np.fromstring(b'\xFF\x7F\xFF\xFB', dtype='>f4')[0],
-        "LRS": np.fromstring(b'\xFF\x7F\xFF\xFC', dtype='>f4')[0],
-        "LIS": np.fromstring(b'\xFF\x7F\xFF\xFD', dtype='>f4')[0],
-        "HRS": np.fromstring(b'\xFF\x7F\xFF\xFE', dtype='>f4')[0],
-        "HIS": np.fromstring(b'\xFF\x7F\xFF\xFF', dtype='>f4')[0]
+        "NULL": np.frombuffer(b'\xFF\x7F\xFF\xFB', dtype='>f4')[0],
+        "LRS": np.frombuffer(b'\xFF\x7F\xFF\xFC', dtype='>f4')[0],
+        "LIS": np.frombuffer(b'\xFF\x7F\xFF\xFD', dtype='>f4')[0],
+        "HRS": np.frombuffer(b'\xFF\x7F\xFF\xFE', dtype='>f4')[0],
+        "HIS": np.frombuffer(b'\xFF\x7F\xFF\xFF', dtype='>f4')[0]
     }
 
     def __init__(self, path, terrain_resolution=1.0):
